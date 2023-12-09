@@ -1,5 +1,6 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.Destillering;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -7,33 +8,35 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.time.LocalDate;
 
 import javafx.scene.control.Label;
 
 
 class DestilleringPane extends GridPane {
+    private String vindueNavn = "Destillering";
+    private MainPane mainPane;
+
     public DestilleringPane() {
-        // Set the gaps between grid elements
         setHgap(10);
         setVgap(10);
 
-        // Create buttons
+        this.mainPane = mainPane;
+        //buttons
         Button lukButton = new Button("Luk");
         Button opretButton = new Button("Opret");
 
-        // Create date pickers
+        //datepickers
         DatePicker startDatePicker = new DatePicker();
         DatePicker endDatePicker = new DatePicker();
 
-        // Create text fields
+        // textfields
         TextField væskeMængdeField = new TextField();
         TextField rygeMaterialeField = new TextField();
         TextField kornSortField = new TextField();
         TextField kommentarField = new TextField();
 
-        // Create labels
+        //labels
         Label startDateLabel = new Label("Start dato:");
         Label endDateLabel = new Label("Slut dato:");
         Label væskeMængdeLabel = new Label("Væskemængde:");
@@ -45,7 +48,7 @@ class DestilleringPane extends GridPane {
         //Combobox
         ComboBox maltBatchCbo = new ComboBox<String>();
 
-        // Add components to the grid
+        // Tilføj alt
         add(startDateLabel, 0, 0);
         add(startDatePicker, 1, 0);
         add(endDateLabel, 0, 1);
@@ -63,12 +66,10 @@ class DestilleringPane extends GridPane {
         add(lukButton, 0, 8);
         add(opretButton, 1, 8);
 
-        // Set padding for the entire pane
 
-
-        // Set event handlers for the buttons
-        lukButton.setOnAction(e -> closeWindow());
-        opretButton.setOnAction(e -> submitData(
+        // Knap funktioner
+        lukButton.setOnAction(e -> lukVindue());
+        opretButton.setOnAction(e -> opretObjekt(
                 startDatePicker.getValue(),
                 endDatePicker.getValue(),
                 Double.parseDouble(væskeMængdeField.getText()),
@@ -78,20 +79,19 @@ class DestilleringPane extends GridPane {
         ));
     }
 
-    private void closeWindow() {
+    private void lukVindue() {
         Stage stage = (Stage) getScene().getWindow();
         stage.close();
     }
 
-    private void submitData(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar) {
-        // Create an instance of the Destillering class with the provided data
-        Destillering destillering = new Destillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar);
+    private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar) {
+        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar);
+        lukVindue();
+    }
 
-        // Do something with the destillering object, e.g., pass it to another method or class
-        // ...
-
-        // Close the current window
-        closeWindow();
+    @Override
+    public String toString(){
+        return vindueNavn;
     }
 
 

@@ -1,13 +1,19 @@
 package gui;
 
-import javafx.application.Application;
+import application.model.Medarbejder;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class MedarbejderPane extends GridPane {
+
+    private String vindueNavn = "Medarbejder";
+
+
     public MedarbejderPane(){
         setHgap(10);
         setVgap(10);
@@ -30,12 +36,22 @@ public class MedarbejderPane extends GridPane {
         add(lukButton, 0, 8);
         add(opretButton, 1, 8);
 
-        lukButton.setOnAction(e -> closeWindow());
+        lukButton.setOnAction(e -> lukVindue());
+        opretButton.setOnAction(e -> opretObjekt(navnTxF.getText(), idTxf.getText()));
     }
 
-    private void closeWindow() {
+    private void opretObjekt(String navn, String id) {
+        //TODO Brug controller til at oprette objekter
+        lukVindue();
+    }
+
+    private void lukVindue() {
         Stage stage = (Stage) getScene().getWindow();
         stage.close();
+    }
+    @Override
+    public String toString(){
+        return vindueNavn;
     }
 
 
