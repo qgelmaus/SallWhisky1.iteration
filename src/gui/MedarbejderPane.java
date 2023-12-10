@@ -1,13 +1,18 @@
 package gui;
 
 import application.model.Medarbejder;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class MedarbejderPane extends GridPane {
 
@@ -18,29 +23,30 @@ public class MedarbejderPane extends GridPane {
         setHgap(5);
         setVgap(10);
 
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(30);
 
         Button lukButton = new Button("Luk");
         Button opretButton = new Button("Opret");
 
 
-        Label navnLabel = new Label("Navn:");
         Label idLabel = new Label("ID:");
-        TextField navnTxF = new TextField();
         TextField idTxf = new TextField();
+        idTxf.setPrefSize(50,50);
+        idTxf.setStyle("-fx-font-size: 16px;");
 
 
-        add(navnLabel, 0, 0);
-        add(navnTxF,1 ,0);
-        add(idLabel, 0, 1 );
-        add(idTxf, 1, 1);
-        add(lukButton, 0, 8);
-        add(opretButton, 1, 8);
+        add(idLabel, 0, 0 );
+        add(idTxf, 0, 1);
+        gridPane.add(lukButton, 1, 2);
+        gridPane.add(opretButton, 0, 2);
+        add(gridPane, 0,2);
 
         lukButton.setOnAction(e -> lukVindue());
-        opretButton.setOnAction(e -> opretObjekt(navnTxF.getText(), idTxf.getText()));
+        opretButton.setOnAction(e -> opretObjekt(idTxf.getText()));
     }
 
-    private void opretObjekt(String navn, String id) {
+    private void opretObjekt(String id) {
         //TODO Brug controller til at oprette objekter
         lukVindue();
     }

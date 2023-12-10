@@ -1,0 +1,35 @@
+<component name="libraryTable">
+  <library name="javafx">
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.base" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.controls" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/../java/Kode/Java/JDOC/javafx-19.0.2.1-javadoc/javafx.graphics" recursive="false" type="SOURCES" />
+  </library>
+</component>

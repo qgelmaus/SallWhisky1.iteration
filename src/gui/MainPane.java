@@ -123,7 +123,8 @@ public class MainPane extends Application {
 
     private void openNewPane(GridPane pane) {
         Stage newStage = new Stage();
-        Scene scene = new Scene(pane, 800, 600);
+        pane.setPadding(new Insets(20));
+        Scene scene = new Scene(pane, 200, 150);
         newStage.setScene(scene);
         newStage.setTitle(pane.toString());
         newStage.show();
