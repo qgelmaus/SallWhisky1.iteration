@@ -66,7 +66,7 @@ public class MainPane extends Application {
        //Buttons
         Button button1 = new Button("Opret destillering");
         Button button2 = new Button("Tilføj medarbejder");
-        Button button3 = new Button("Opdater destilleringer");
+        Button button3 = new Button("Opdater");
         Button button4 = new Button("Se bemærkninger");
         Button button5 = new Button("Fyld fad");
         Button button6 = new Button("Opret fad");
@@ -76,9 +76,9 @@ public class MainPane extends Application {
         gridPane.add(button3, 1, 5);
         gridPane.add(button4, 2, 5);
         gridPane.add(button5, 3, 3);
-        button1.setOnAction(e -> openNewPane(new DestilleringPane()));
-        button2.setOnAction(e -> openNewPane(new MedarbejderPane()));
-        button5.setOnAction(e -> openNewPane(new PåfyldningPane()));
+        button1.setOnAction(e -> openBigPane(new DestilleringPane()));
+        button2.setOnAction(e -> openSmallPane(new MedarbejderPane()));
+        button5.setOnAction(e -> openBigPane(new PåfyldningPane()));
 
         VBox vBox1 = new VBox();
 
@@ -91,7 +91,7 @@ public class MainPane extends Application {
         ListView<Destillering> destilleringLW = new ListView<>(destillerings);
         gridPane.add(aktuelleDestilleringerLbl, 1, 0);
         gridPane.add(destilleringLW, 1, 1);
-        button3.setOnAction(e -> updateList(destilleringLW));
+//        button3.setOnAction(e -> updateList(destilleringLW, ));
         destilleringLW.setPrefSize(200,200);
 
         Label aktuelleMedarbejderLbl = new Label("Aktive medarbejdere:");
@@ -99,13 +99,13 @@ public class MainPane extends Application {
         ListView<Medarbejder> medarbejdersLW = new ListView<>(medarbejders);
         gridPane.add(aktuelleMedarbejderLbl, 2, 0);
         gridPane.add(medarbejdersLW, 2, 1);
-        button3.setOnAction(e -> updateList(medarbejdersLW));
+        button3.setOnAction(e -> updateList( destilleringLW,medarbejdersLW));
         medarbejdersLW.setPrefSize(150,150);
 
 
 
-        button4.setOnAction(e -> openNewPane(new InfoPane(destilleringLW.getSelectionModel().getSelectedItem())));
-        updateList(destilleringLW);
+        button4.setOnAction(e -> openBigPane(new InfoPane(destilleringLW.getSelectionModel().getSelectedItem())));
+        updateList(destilleringLW, medarbejdersLW);
         return gridPane;
     }
 
@@ -122,7 +122,15 @@ public class MainPane extends Application {
         return gridPane;
     }
 
-    private void openNewPane(GridPane pane) {
+    private void openBigPane(GridPane pane) {
+        Stage newStage = new Stage();
+        pane.setPadding(new Insets(20));
+        Scene scene = new Scene(pane, 300, 350);
+        newStage.setScene(scene);
+        newStage.setTitle(pane.toString());
+        newStage.show();
+    }
+    private void openSmallPane(GridPane pane) {
         Stage newStage = new Stage();
         pane.setPadding(new Insets(20));
         Scene scene = new Scene(pane, 200, 150);
@@ -130,16 +138,15 @@ public class MainPane extends Application {
         newStage.setTitle(pane.toString());
         newStage.show();
     }
-
-    public void updateList(ListView listView){
+    public void updateList(ListView listView, ListView listView2){
         List<Destillering> updatedList = Storage.getInstance().getAllDestillerings();
         ObservableList<Destillering> observableList = FXCollections.observableArrayList(updatedList);
         listView.setItems(observableList);
+
+        List<Medarbejder> updatedList2 = Storage.getInstance().getAllMedarbejders();
+        ObservableList<Medarbejder> observableList2 = FXCollections.observableArrayList(updatedList2);
+        listView2.setItems(observableList2);
     }
-
-
-
-
 
 
 }

@@ -42,7 +42,10 @@ public class Fad {
     }
 
     public int getFadId() {
-        return fadId;
+        int id = 0;
+        id++;
+        return id;
+
     }
 
     public LocalDate getTappeDato() {
