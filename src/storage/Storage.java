@@ -15,6 +15,14 @@ public class Storage {
     private List<Mængde> mængdes = new ArrayList<>();
     private List<Fad> fads = new ArrayList<>();
 
+    private List<Reol> reols = new ArrayList<>();
+
+    private List<WhiskyMængde> whiskyMængdes = new ArrayList<>();
+
+    private List<Whisky> whiskys = new ArrayList<>();
+
+    private List<Lager> lagers = new ArrayList<>();
+
 
     private Storage(){
 
@@ -71,11 +79,39 @@ public class Storage {
     }
 
 
+    public List<Reol> getAllReols(){return new ArrayList<>(reols);}
 
-    public void initStorage(){
+    public void addReol(Reol r){
+        if(!reols.contains(r))
+            reols.add(r);
+    }
 
+    public List<WhiskyMængde> getAllWhiskyMængdes(){return new ArrayList<>(whiskyMængdes);}
+
+    public void addWhiskyMængde(WhiskyMængde wm){
+        if(!whiskyMængdes.contains(wm))
+            whiskyMængdes.add(wm);
+    }
+
+    public List<Whisky> getAllWhiskys(){return new ArrayList<>(whiskys);}
+
+    public void addWhisky(Whisky w){
+        if(!whiskys.contains(w))
+            whiskys.add(w);
+    }
+
+    public List<Lager> getAllLagers(){return new ArrayList<>(lagers);}
+
+    public void addLager(Lager l){
+        if(!lagers.contains(l))
+            lagers.add(l);
     }
 
 
 
+
+    public void initStorage(){
+
+
+    }
 }
