@@ -62,4 +62,9 @@ public Whisky(String navn, int nr, double procent, Påfyldning påfyldning, doub
         if(whiskyMængdeArrayList.contains(whiskyMængde))
             whiskyMængdeArrayList.remove(whiskyMængde);
     }
+
+    public void addWhiskyMængde(WhiskyMængde wm) {
+        if(!whiskyMængdeArrayList.contains(wm))
+            whiskyMængdeArrayList.add(wm);
+    }
 }

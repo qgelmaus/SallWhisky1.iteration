@@ -40,4 +40,16 @@ public class WhiskyMængde {
                 påfyldning.addWhiskyMængde(this);
         }
     }
+
+    public void setWhisky(Whisky w) {
+        if(this.whisky != w){
+            Whisky oldWhisky = this.whisky;
+            if(oldWhisky != null){
+                oldWhisky.removeWhiskyMængde(this);
+            }
+            this.whisky = w;
+            if(w != null)
+                w.addWhiskyMængde(this);
+        }
+    }
 }
