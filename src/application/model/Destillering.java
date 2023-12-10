@@ -38,7 +38,25 @@ public class Destillering {
     }
 
 
+    public LocalDate getStartDato() {
+        return startDato;
+    }
 
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
+    public double getVæskeMængde() {
+        return væskeMængde;
+    }
+
+    public String getRygeMateriale() {
+        return rygeMateriale;
+    }
+
+    public String getKornSort() {
+        return kornSort;
+    }
 
     //Klassesammenhænge
     public ArrayList<Mængde> getMængdeArrayList(){
