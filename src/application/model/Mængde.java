@@ -4,13 +4,18 @@ public class Mængde {
 
     private double volumen;
     private Destillering destillering;
+    private Påfyldning påfyldning;
 
 
 
-    public Mængde(double volumen){
+    public Mængde(double volumen, Påfyldning påfyldning){
+        this.påfyldning = påfyldning;
         this.volumen = volumen;
     }
 
+    public Påfyldning getPåfyldning(){
+        return påfyldning;
+    }
 
     public Destillering getDestillering(){
         return destillering;
