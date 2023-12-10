@@ -17,8 +17,8 @@ public class PåfyldningPane extends GridPane {
         Button lukButton = new Button("Luk");
         Button opretButton = new Button("Opret");
 
-        add(lukButton, 0, 7);
-        add(opretButton, 0, 8);
+        add(lukButton, 0, 8);
+        add(opretButton, 0, 7);
 
 
 

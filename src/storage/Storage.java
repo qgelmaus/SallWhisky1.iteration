@@ -1,9 +1,6 @@
 package storage;
 
-import application.model.Destillering;
-import application.model.Medarbejder;
-import application.model.Mængde;
-import application.model.Påfyldning;
+import application.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +13,7 @@ public class Storage {
     private List<Destillering> destillerings  = new ArrayList<>();
     private List<Påfyldning> påfyldnings = new ArrayList<>();
     private List<Mængde> mængdes = new ArrayList<>();
+    private List<Fad> fads = new ArrayList<>();
 
 
     private Storage(){
@@ -64,6 +62,12 @@ public class Storage {
     public void addPåfyldning(Påfyldning påfyldning){
         if(!påfyldnings.contains(påfyldning))
             påfyldnings.add(påfyldning);
+    }
+
+    public List<Fad> getAllFads(){return new ArrayList<>(fads);}
+    public void addFad(Fad fad){
+        if(!fads.contains(fad))
+            fads.add(fad);
     }
 
 

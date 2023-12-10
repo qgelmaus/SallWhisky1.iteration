@@ -69,6 +69,7 @@ public class MainPane extends Application {
         Button button3 = new Button("Opdater destilleringer");
         Button button4 = new Button("Se bemærkninger");
         Button button5 = new Button("Fyld fad");
+        Button button6 = new Button("Opret fad");
 
         gridPane.add(button1, 1, 3);
         gridPane.add(button2, 2, 3);
