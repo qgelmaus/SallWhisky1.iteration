@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Whisky {
 
-    //group
+
     private String navn;
 
     private int nr;
@@ -50,8 +50,10 @@ public Whisky(String navn, int nr, double procent, Påfyldning påfyldning, doub
         return whiskyMængdeArrayList;
     }
 
+
+
     public WhiskyMængde createWhiskyMængde(double liter){
-        WhiskyMængde whiskyMængde = new WhiskyMængde(liter, this);
+        WhiskyMængde whiskyMængde = new WhiskyMængde(liter,this, this.påfyldning);
         whiskyMængdeArrayList.add(whiskyMængde);
         return whiskyMængde;
     }
