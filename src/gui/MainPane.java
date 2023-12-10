@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import storage.Storage;
@@ -27,9 +28,9 @@ public class MainPane extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Hjem");
 
-        GridPane gridPane = createGridPane();
-        GridPane gridPane2 = createGridPane();
-        Scene scene = new Scene(gridPane, 640, 480);
+        BorderPane borderPane = createBorderPane();
+
+        Scene scene = new Scene(borderPane, 640, 480);
 
         primaryStage.setScene(scene);
 
@@ -38,8 +39,18 @@ public class MainPane extends Application {
 
 
     }
-    //TODO Ændre til borderpane og tilføj to gridpanes
-    private GridPane createGridPane() {
+    private BorderPane createBorderPane(){
+        BorderPane borderPane = new BorderPane();
+        GridPane gridPaneLeft = createGridPaneLeft();
+        GridPane gridPaneRight = createGridPaneRight();
+        borderPane.setLeft(gridPaneLeft);
+        borderPane.setCenter(gridPaneRight);
+
+
+        return borderPane;
+    }
+
+    private GridPane createGridPaneLeft() {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -69,6 +80,19 @@ public class MainPane extends Application {
         button3.setOnAction(e -> updateList(destilleringLW));
 
         button4.setOnAction(e -> openNewPane(new InfoPane(destilleringLW.getSelectionModel().getSelectedItem())));
+        return gridPane;
+    }
+
+    private GridPane createGridPaneRight(){
+        GridPane gridPane = new GridPane();
+
+        //Listview
+        Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
+        destillerings = FXCollections.observableArrayList();
+        ListView<Destillering> destilleringLW = new ListView<>(destillerings);
+        gridPane.add(aktuelleDestilleringerLbl, 1, 0);
+        gridPane.add(destilleringLW, 1, 1);
+
         return gridPane;
     }
 
