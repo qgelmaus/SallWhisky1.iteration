@@ -49,4 +49,15 @@ public Whisky(String navn, int nr, double procent, Påfyldning påfyldning, doub
     public ArrayList<WhiskyMængde> getWhiskyMængdeArrayList() {
         return whiskyMængdeArrayList;
     }
+
+    public WhiskyMængde createWhiskyMængde(double liter){
+        WhiskyMængde whiskyMængde = new WhiskyMængde(liter, this);
+        whiskyMængdeArrayList.add(whiskyMængde);
+        return whiskyMængde;
+    }
+
+    public void removeWhiskyMængde(WhiskyMængde whiskyMængde){
+        if(whiskyMængdeArrayList.contains(whiskyMængde))
+            whiskyMængdeArrayList.remove(whiskyMængde);
+    }
 }
