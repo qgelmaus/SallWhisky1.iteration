@@ -1,6 +1,7 @@
 package application.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Fad {
@@ -87,14 +88,14 @@ public class Fad {
         }
     }
 
-    public void setReol(Reol reol){
-        if(this.reol != reol) {
+    public void setReol(Reol reol) {
+        if (this.reol != reol) {
             Reol oldReol = this.reol;
             if (oldReol != null)
                 oldReol.removeFad(this);
         }
         this.reol = reol;
-        if(reol != null)
+        if (reol != null)
             reol.addFad(this);
     }
 
@@ -113,5 +114,13 @@ public class Fad {
                 '}';
     }
 
-
+    public int tidPåFad(LocalDate påfyldningsDato, LocalDate tappeDato) {
+        int tidPåFad = (int) ChronoUnit.DAYS.between(påfyldningsDato, tappeDato);
+        if (tidPåFad > 1095) {
+            System.out.println("Fadet er klar til tapning");
+        } else {
+            System.out.println("Fadet er ikke klar til tapning");
+        }
+        return tidPåFad;
+    }
 }

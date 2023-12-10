@@ -73,7 +73,7 @@ public class PåfyldningPane extends GridPane {
     }
 
     private void fyldFadFraMængde(Destillering destillering, double volume, Fad fad){
-        Påfyldning påfyldning = Controller.opretPåfyldning(volume);
+        Påfyldning påfyldning = Controller.opretPåfyldning(volume, destillering.getStartDato(), destillering.getSlutDato(), volume, true, fad);
         Mængde mængde = Controller.opretMængde(volume, påfyldning);
         lukVindue();
     }

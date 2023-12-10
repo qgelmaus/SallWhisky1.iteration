@@ -8,7 +8,7 @@ public class Lager {
 
     private int samletAntalFade;
 
-
+    private final ArrayList<Reol> reolArrayList = new ArrayList<>();
 
 
     public Lager(String lokation, int samletAntalFade) {
