@@ -35,8 +35,8 @@ public class Controller {
         return m;
     }
 
-    public static Fad opretFad(double størrelse, String type, LocalDate tappeDato, String oprindelse){
-        Fad f = new Fad(størrelse, type, oprindelse);
+    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, int fadId, LocalDate tappeDato, String oprindelse){
+        Fad f = new Fad( fadType,  fadstørrelse,  isBlended,  fadId,  tappeDato,  oprindelse);
         Storage.getInstance().addFad(f);
         return f;
     }
