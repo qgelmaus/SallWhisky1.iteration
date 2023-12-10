@@ -2,6 +2,8 @@ package application.controller;
 
 import application.model.Destillering;
 import application.model.Medarbejder;
+import application.model.Mængde;
+import application.model.Påfyldning;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -24,8 +26,22 @@ public class Controller {
         return d;
     }
 
+    public static Påfyldning opretPåfyldning(double volume){
+        Påfyldning p = new Påfyldning(volume);
+        Storage.getInstance().addPåfyldning(p);
+        return p;
+    }
+
+    public static Mængde opretMængde(double volume, Påfyldning påfyldning){
+        Mængde m = new Mængde(volume, påfyldning);
+        Storage.getInstance().addMængde(m);
+        return m;
+    }
+
     public void createSomeObjects(){
         opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering");
     }
+
+
 
 }

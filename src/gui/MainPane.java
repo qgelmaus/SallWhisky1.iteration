@@ -62,12 +62,16 @@ public class MainPane extends Application {
         Button button2 = new Button("Tilføj medarbejder");
         Button button3 = new Button("Opdater destilleringer");
         Button button4 = new Button("Se bemærkninger");
+        Button button5 = new Button("Fyld fad");
+
         gridPane.add(button1, 0, 0);
         gridPane.add(button2, 0, 1);
         gridPane.add(button3, 0, 2);
         gridPane.add(button4, 0, 3);
+        gridPane.add(button5, 0, 4);
         button1.setOnAction(e -> openNewPane(new DestilleringPane()));
         button2.setOnAction(e -> openNewPane(new MedarbejderPane()));
+        button5.setOnAction(e -> openNewPane(new PåfyldningPane()));
 
 
 

@@ -6,7 +6,7 @@ public class Påfyldning {
     private double volume;
     private final ArrayList<Mængde> mængdeArrayList = new ArrayList<>();
 
-    public Påfyldning(int volumen){
+    public Påfyldning(double volumen){
         this.volume = volumen;
     }
 

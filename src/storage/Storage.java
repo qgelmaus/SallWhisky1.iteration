@@ -2,6 +2,8 @@ package storage;
 
 import application.model.Destillering;
 import application.model.Medarbejder;
+import application.model.Mængde;
+import application.model.Påfyldning;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ public class Storage {
 
     private List<Medarbejder> medarbejders = new ArrayList<>();
     private List<Destillering> destillerings  = new ArrayList<>();
+    private List<Påfyldning> påfyldnings = new ArrayList<>();
+    private List<Mængde> mængdes = new ArrayList<>();
 
 
     private Storage(){
@@ -46,6 +50,23 @@ public class Storage {
             destillerings.add(destillering);
 
     }
+
+    //Mængde
+    public List<Mængde> getAllMængder(){return new ArrayList<Mængde>(mængdes);}
+
+    public void addMængde(Mængde mængde){
+        if(!mængdes.contains(mængde))
+            mængdes.add(mængde);
+    }
+
+    // Påfyldninger
+    public List<Påfyldning> getAllPåfyldning(){return new ArrayList<Påfyldning>(påfyldnings);}
+    public void addPåfyldning(Påfyldning påfyldning){
+        if(!påfyldnings.contains(påfyldning))
+            påfyldnings.add(påfyldning);
+    }
+
+
 
     public void initStorage(){
 
