@@ -15,7 +15,7 @@ public class MedarbejderPane extends GridPane {
 
 
     public MedarbejderPane(){
-        setHgap(10);
+        setHgap(5);
         setVgap(10);
 
 

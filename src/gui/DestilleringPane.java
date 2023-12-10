@@ -7,7 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
 
+import java.awt.*;
 import java.time.LocalDate;
 
 import javafx.scene.control.Label;
@@ -20,6 +22,8 @@ class DestilleringPane extends GridPane {
     public DestilleringPane() {
         setHgap(10);
         setVgap(10);
+        setPadding(new Insets(20, 20, 20 ,20));
+
 
         this.mainPane = mainPane;
         //buttons

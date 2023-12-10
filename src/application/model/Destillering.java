@@ -86,12 +86,9 @@ public class Destillering {
 
     @Override
     public String toString() {
-        return "Destillering{" +
-                "Start: " + startDato +
-                ", Slut: " + slutDato +
-                ", Væske: " + væskeMængde +
-                ", Røg: '" + rygeMateriale + '\'' +
-                ", Korn: " + kornSort + '\''
+        return "Destillering: " +
+                "\nStart: " + startDato +
+                ", Slut: " + slutDato
                 ;
     }
 
