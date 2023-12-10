@@ -43,7 +43,14 @@ public class Controller {
 
     public void createSomeObjects(){
         opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering");
-        opretFad(180, "ex-bourbon", LocalDate.of(2024, 12, 12), "USA");
+//        opretFad("Eg", 180, true,1, LocalDate.of(2024, 12, 12), "Skotland");
+        opretMedarbejder("Jens", "1");
+        opretMedarbejder("Thorkild", "2");
+        opretMedarbejder("Martin", "3");
+        opretMedarbejder("Emil", "4");
+        opretMedarbejder("Hans", "5");
+
+
     }
 
 

@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import storage.Storage;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class PåfyldningPane extends GridPane {
@@ -73,8 +74,8 @@ public class PåfyldningPane extends GridPane {
     }
 
     private void fyldFadFraMængde(Destillering destillering, double volume, Fad fad){
-        Påfyldning påfyldning = Controller.opretPåfyldning(volume);
-        Mængde mængde = Controller.opretMængde(volume, påfyldning);
+//        Påfyldning påfyldning = Controller.opretPåfyldning(LocalDate.of(2020,19,10), 123, true);
+//        Mængde mængde = Controller.opretMængde(volume, påfyldning);
         lukVindue();
     }
 
