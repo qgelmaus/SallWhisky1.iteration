@@ -23,8 +23,8 @@ public class Controller {
         return d;
     }
 
-    public static Påfyldning opretPåfyldning(double volume){
-        Påfyldning p = new Påfyldning(volume);
+    public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
+        Påfyldning p = new Påfyldning( antalLiter,  dato,  påfyldningsDato,  antalPåfyldteLiter,  isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }

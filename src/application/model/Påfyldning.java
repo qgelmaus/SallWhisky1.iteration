@@ -20,12 +20,13 @@ public class Påfyldning {
     private Fad fad;
 
 
-    public Påfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky){
+    public Påfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad) {
         this.antalLiter = antalLiter;
         this.dato = dato;
         this.påfyldningsDato = påfyldningsDato;
         this.antalPåfyldteLiter = antalPåfyldteLiter;
         this.isWhisky = isWhisky;
+        this.fad = fad;
     }
 
     public LocalDate getDato(){
