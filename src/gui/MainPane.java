@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -27,14 +28,17 @@ public class MainPane extends Application {
         this.primaryStage.setTitle("Hjem");
 
         GridPane gridPane = createGridPane();
-        Scene scene = new Scene(gridPane, 300, 200);
+        GridPane gridPane2 = createGridPane();
+        Scene scene = new Scene(gridPane, 640, 480);
+
         primaryStage.setScene(scene);
+
 
         primaryStage.show();
 
 
     }
-
+    //TODO Ændre til borderpane og tilføj to gridpanes
     private GridPane createGridPane() {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
@@ -57,9 +61,11 @@ public class MainPane extends Application {
 
 
         //Listview
+        Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
         destillerings = FXCollections.observableArrayList();
         ListView<Destillering> destilleringLW = new ListView<>(destillerings);
-        gridPane.add(destilleringLW, 1, 0);
+        gridPane.add(aktuelleDestilleringerLbl, 1, 0);
+        gridPane.add(destilleringLW, 1, 1);
         button3.setOnAction(e -> updateList(destilleringLW));
 
         button4.setOnAction(e -> openNewPane(new InfoPane(destilleringLW.getSelectionModel().getSelectedItem())));
@@ -68,7 +74,7 @@ public class MainPane extends Application {
 
     private void openNewPane(GridPane pane) {
         Stage newStage = new Stage();
-        Scene scene = new Scene(pane, 500, 300);
+        Scene scene = new Scene(pane, 800, 600);
         newStage.setScene(scene);
         newStage.setTitle(pane.toString());
         newStage.show();
