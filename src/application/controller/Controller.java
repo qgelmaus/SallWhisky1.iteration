@@ -17,8 +17,8 @@ public class Controller {
         return m;
     }
 
-    public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar){
-        Destillering d = new Destillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar);
+    public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
+        Destillering d = new Destillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, maltBatch);
         Storage.getInstance().addDestillering(d);
         return d;
     }
@@ -82,7 +82,7 @@ public class Controller {
     }
 
     public void createSomeObjects(){
-        opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering");
+        opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
         opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300, null);
     }
 
