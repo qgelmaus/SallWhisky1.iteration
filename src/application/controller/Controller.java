@@ -83,7 +83,14 @@ public class Controller {
 
     public void createSomeObjects(){
         opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
-        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300, null);
+        opretReol(300, "Reol1", null);
+        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300,null);
+        opretPåfyldning(300, LocalDate.of(2023, 12, 25), LocalDate.of(2023, 12, 25), 300, false, null);
+        opretMængde(300, null);
+        opretReol(300, "Reol1", null);
+        opretLager("Lager1", 300);
+        opretWhiskyMængde(300, null, null);
+        opretWhisky("Sherry", 300, 40, null, 0);
     }
 
 
