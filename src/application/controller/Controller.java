@@ -24,7 +24,7 @@ public class Controller {
     }
 
     public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( antalLiter,  dato,  påfyldningsDato,  antalPåfyldteLiter,  isWhisky,  fad);
+        Påfyldning p = new Påfyldning( antalLiter,  dato, isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }

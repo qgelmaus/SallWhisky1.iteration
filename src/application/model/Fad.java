@@ -15,6 +15,8 @@ public class Fad {
     private LocalDate tappeDato;
     private String oprindelse;
 
+    private double antalPåfyldteLiter;
+
     private final ArrayList<Påfyldning> påfyldningArrayList = new ArrayList<>();
 
 
