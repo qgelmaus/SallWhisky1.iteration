@@ -1,9 +1,10 @@
-package Test;
+package application.controller;
 
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
 import application.model.Påfyldning;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -64,4 +65,52 @@ class ControllerTest {
         assertTrue(TC4 >= 1095);
 
     }
+
+    @Test
+    void opretDestillering() {
+        //TC1
+        //Arrange
+        Controller controller = new Controller();
+        Destillering destillering1 = new Destillering(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 12), 150, "Eg", "Stairway", "null", null);
+
+        //Act
+        boolean TC1 = Destillering.dateChecker(destillering1.getStartDato(), destillering1.getSlutDato());
+
+        //Assert
+        assertTrue(TC1);
+
+        //TC2
+        //Arrange
+         Destillering destillering2 = new Destillering(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1,9), -5, "Eg", "Irina", "null", null);
+
+        //Act
+        boolean TC2 = Destillering.dateChecker(destillering2.getStartDato(), destillering2.getSlutDato());
+
+        //Assert
+        assertTrue(TC2);
+
+        //TC3
+        //Arrange
+        Destillering destillering3 = new Destillering(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 13), 200, "Eg", "Stairway", "null", null);
+
+        //Act
+        boolean TC3 = Destillering.dateChecker(destillering3.getStartDato(), destillering3.getSlutDato());
+
+        //Assert
+        assertTrue(TC3);
+
+        //TC4
+        //Arrange
+        Destillering destillering4 = new Destillering(LocalDate.of(2020, 1, 7), LocalDate.of(2020, 1,1), 150, "Eg", "Stairway", "null", null);
+
+        //Act
+        boolean TC4 = Destillering.dateChecker(destillering4.getStartDato(), destillering4.getSlutDato());
+
+        //Assert
+        assertTrue(TC4);
+
+
+
+    }
+
 }
