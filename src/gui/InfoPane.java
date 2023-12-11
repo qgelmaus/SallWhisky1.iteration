@@ -1,8 +1,12 @@
 package gui;
 
 import application.model.Destillering;
+import application.model.Medarbejder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -11,6 +15,7 @@ import javafx.stage.Stage;
 public class InfoPane extends GridPane {
     private String vindueNavn = "Info";
     private MainPane mainPane;
+    private ListView<Medarbejder> medarbejderListView;
 
     public InfoPane(Destillering destillering) {
         setHgap(10);
@@ -35,18 +40,24 @@ public class InfoPane extends GridPane {
         Label rygeMateriale = new Label("Rygemateriale: " + destillering.getRygeMateriale());
         Label kornSortLabel = new Label("Kornsort: " + destillering.getKornSort());
         Label maltBatchLabel = new Label("Malt batch: " + destillering.getMaltBatch());
+        ObservableList<Medarbejder> medarbejderObservableList = FXCollections.observableArrayList(destillering.getMedarbejderList());
+        medarbejderListView = new ListView<>(medarbejderObservableList);
+        Label medarbejdereLbl = new Label("Medarbejdere");
+        medarbejderListView.setMaxWidth(150);
+        medarbejderListView.setMaxHeight(200);
 
         VBox vBox1 = new VBox(5);
         VBox vBox2 = new VBox(10);
+        VBox vBox3 = new VBox(5);
 
         vBox1.getChildren().addAll(bemærkningLabel, infoBox);
         vBox2.getChildren().addAll(startLabel, slutLabel, væskeLabel, rygeMateriale, kornSortLabel, maltBatchLabel);
-
+        vBox3.getChildren().addAll(medarbejdereLbl, medarbejderListView);
 //        add(bemærkningLabel,0,0);
 //        add(infoBox, 0, 1);
         add(vBox1,0,0);
-
-        add(vBox2,1,0);
+        add(vBox3,1 ,0);
+        add(vBox2,2,0);
 //        add(startLabel, 2, 0);
 //        add(slutLabel,2,1);
 //        add(væskeLabel,2,2);

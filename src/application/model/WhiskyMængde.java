@@ -9,10 +9,9 @@ public class WhiskyMængde {
 
     private Påfyldning påfyldning;
 
-    public WhiskyMængde(double liter, Whisky whisky, Påfyldning påfyldning) {
+    public WhiskyMængde(double liter, Whisky whisky) {
         this.liter = liter;
         this.whisky = whisky;
-        this.påfyldning = påfyldning;
     }
 
     public double getLiter() {

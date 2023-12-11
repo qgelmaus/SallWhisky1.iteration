@@ -12,7 +12,7 @@ public class Påfyldning {
 
     private double antalPåfyldteLiter;
 
-    private boolean isWhisky;
+
 
 
     private final ArrayList<WhiskyMængde> whiskyMængdeArrayList = new ArrayList<>();
@@ -21,18 +21,14 @@ public class Påfyldning {
     private Fad fad;
 
 
-    public Påfyldning( LocalDate dato, double antalPåfyldteLiter, boolean isWhisky, Fad fad) {
+    public Påfyldning( LocalDate dato, Fad fad) {
         this.påfyldningsDato = dato;
-        this.antalPåfyldteLiter = antalPåfyldteLiter;
-        this.isWhisky = isWhisky;
         this.fad = fad;
     }
 
     @Override
     public String toString() {
-        return "Påfyldning{" +
-                "mængdeArrayList=" + mængdeArrayList +
-                '}';
+        return "Påfyldning d. " + dato;
     }
 
     public void setAntalLiter(double antalLiter){
@@ -51,9 +47,6 @@ public class Påfyldning {
         return dato;
     }
 
-    public boolean isWhisky() {
-        return isWhisky;
-    }
 
     public ArrayList<Mængde> getMængdeArrayList() {
         return new ArrayList<>(mængdeArrayList);

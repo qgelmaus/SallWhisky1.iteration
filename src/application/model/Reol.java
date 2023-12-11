@@ -1,19 +1,26 @@
 package application.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reol {
     private String reolId;
 
     private int antalFade;
 
-    private final ArrayList<Fad> fadArrayList = new ArrayList<>();
+    private final List<Fad> fadArrayList = new ArrayList<>();
 
     private Lager lager;
 
-    public Reol(String reolId, int antalFade, Lager lager) {
+    @Override
+    public String toString() {
+        return "Reol-" + reolId +
+                " Antal fade: " + antalFade +
+                ", Lokation: " + lager;
+    }
+
+    public Reol(String reolId, Lager lager) {
         this.reolId = reolId;
-        this.antalFade = antalFade;
         this.lager = lager;
     }
 
@@ -25,8 +32,12 @@ public class Reol {
         return antalFade;
     }
 
+    public void setAntalFade(){
+        this.antalFade = fadArrayList.size();
+    }
+
     public ArrayList<Fad> getFadArrayList() {
-        return fadArrayList;
+        return new ArrayList<>(fadArrayList);
     }
 
     public Lager getLager() {

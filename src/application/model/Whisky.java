@@ -52,8 +52,8 @@ public Whisky(String navn, int nr, double procent, Påfyldning påfyldning, doub
 
 
 
-    public WhiskyMængde createWhiskyMængde(double liter){
-        WhiskyMængde whiskyMængde = new WhiskyMængde(liter,this, this.påfyldning);
+    public WhiskyMængde createWhiskyMængde(double liter, Whisky whisky){
+        WhiskyMængde whiskyMængde = new WhiskyMængde(liter, this);
         whiskyMængdeArrayList.add(whiskyMængde);
         return whiskyMængde;
     }
@@ -66,5 +66,13 @@ public Whisky(String navn, int nr, double procent, Påfyldning påfyldning, doub
     public void addWhiskyMængde(WhiskyMængde wm) {
         if(!whiskyMængdeArrayList.contains(wm))
             whiskyMængdeArrayList.add(wm);
+    }
+
+    @Override
+    public String toString() {
+        return  "navn: " + navn + '\'' +
+                ", nr: " + nr +
+                ", VOL: " + procent +
+                ", Vand: " + tilsætningAfVand;
     }
 }

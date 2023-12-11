@@ -25,14 +25,15 @@ public class Controller {
         return d;
     }
 
-   public static Påfyldning opretPåfyldning( LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( dato, antalPåfyldteLiter, isWhisky,  fad);
+   public static Påfyldning opretPåfyldning( LocalDate dato, LocalDate påfyldningsDato, Fad fad){
+        Påfyldning p = new Påfyldning( dato,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
 
     public static Påfyldning opretTomPåfyldning(){
-        Påfyldning p = new Påfyldning( null, 0, false, null);
+        LocalDate dato = LocalDate.now();
+        Påfyldning p = new Påfyldning( dato, null);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
@@ -49,20 +50,20 @@ public class Controller {
         return f;
     }
 
-    public static Reol opretReol(int antalFade, String reolId, Lager lager){
-        Reol r = new Reol(reolId, antalFade, lager);
+    public static Reol opretReol(String reolId, Lager lager){
+        Reol r = new Reol(reolId, lager);
         Storage.getInstance().addReol(r);
         return r;
     }
 
-    public static Lager opretLager(String lagerId, int samletAntalFade){
-        Lager l = new Lager(lagerId, samletAntalFade);
+    public static Lager opretLager(String lagerId){
+        Lager l = new Lager(lagerId);
         Storage.getInstance().addLager(l);
         return l;
     }
 
-    public static WhiskyMængde opretWhiskyMængde(double liter, Whisky whisky, Påfyldning påfyldning){
-        WhiskyMængde wm = new WhiskyMængde(liter, whisky, påfyldning);
+    public static WhiskyMængde opretWhiskyMængde(double liter, Whisky whisky){
+        WhiskyMængde wm = new WhiskyMængde(liter, whisky);
         Storage.getInstance().addWhiskyMængde(wm);
         return wm;
     }
@@ -102,11 +103,11 @@ public class Controller {
     }
     public void createSomeObjects(){
         opretDestillering(LocalDate.of(2023,12,12), LocalDate.of(2023, 12, 23),150, "hø", "Byg", "Nice whisky bro", "Maltbatch1");
-        opretReol(300, "Reol1", null);
         opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland");
-        opretReol(300, "Reol1", null);
-        opretLager("Lager1", 300);
-        opretWhiskyMængde(300, null, null);
+        opretLager("Lager1");
+        opretReol("Reol1", Storage.getInstance().getAllLagers().get(0));
+        opretReol( "Reol2",  Storage.getInstance().getAllLagers().get(0));
+
         opretWhisky("Sherry", 300, 40, null, 0);
         opretMedarbejder("Jens", "1");
         opretMedarbejder("Gustav", "2");
