@@ -102,17 +102,26 @@ public class Controller {
         return tidPåFad;
     }
     public void createSomeObjects(){
+        LocalDate dato = LocalDate.now();
         opretDestillering(LocalDate.of(2023,12,12), LocalDate.of(2023, 12, 23),150, "hø", "Byg", "Nice whisky bro", "Maltbatch1");
         opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland");
         opretLager("Lager1");
         opretReol("Reol1", Storage.getInstance().getAllLagers().get(0));
         opretReol( "Reol2",  Storage.getInstance().getAllLagers().get(0));
-
-        opretWhisky("Sherry", 300, 40, null, 0);
+        Fad f = opretFad("Eg", 280, false, "2", null,"USA");
+        Fad f2 = opretFad("Ask", 280, false, "3", null, "Skotland");
         opretMedarbejder("Jens", "1");
         opretMedarbejder("Gustav", "2");
         opretMedarbejder( "Hans", "3");
         opretMedarbejder("Martin", "4");
         opretMedarbejder("Mads", "5");
+        Påfyldning p = opretPåfyldning(dato, dato, f);
+        Destillering d2 = opretDestillering(dato, LocalDate.of(2023, 12, 28), 150,"Halm", "Rug", "ikke så nice whisky bror", "maltBatch1");
+
+        p.createMængde(50, d2);
+        Destillering d = opretDestillering(dato, LocalDate.of(2023, 12, 28), 150,"Hø", "Byg", "Nice whisky bror", "maltBatch1");
+        p.createMængde(50,d );
+        f.addPåfyldning(p);
+
     }
 }
