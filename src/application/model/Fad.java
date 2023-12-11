@@ -48,6 +48,10 @@ public class Fad {
         return isBlended;
     }
 
+    public void setEmpty(){
+        this.isEmpty = true;
+    }
+
     public void setFull(){
         this.isFull = true;
     }
