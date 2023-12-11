@@ -63,6 +63,8 @@ public class Fad {
 
     }
 
+
+
     public boolean getEmptyStatus(){
         boolean isEmpty = false;
         if(antalPåfyldteLiter > 0){

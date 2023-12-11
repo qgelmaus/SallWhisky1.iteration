@@ -25,14 +25,14 @@ public class Controller {
         return d;
     }
 
-   public static Påfyldning opretPåfyldning( LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( dato, antalPåfyldteLiter, isWhisky,  fad);
+   public static Påfyldning opretPåfyldning( LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, Fad fad){
+        Påfyldning p = new Påfyldning( dato, antalPåfyldteLiter,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
 
     public static Påfyldning opretTomPåfyldning(){
-        Påfyldning p = new Påfyldning( null, 0, false, null);
+        Påfyldning p = new Påfyldning( null, 0, null);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
