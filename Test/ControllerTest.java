@@ -18,7 +18,7 @@ class ControllerTest {
         //TC1
         //Arrange
         Controller controller = new Controller();
-        Fad fad1 = new Fad("Sherry", 300, false, 1, LocalDate.of(2023, 11, 20), "Skotland", 0);
+        Fad fad1 = new Fad("Sherry", 300, false, "1", LocalDate.of(2023, 11, 20), "Skotland");
         Påfyldning påfyldning1 = new Påfyldning(LocalDate.of(2020, 10, 20), 300, false, fad1);
 
         //Act
@@ -30,7 +30,7 @@ class ControllerTest {
 
         //TC2
         //Arrange
-        //Fad fad2 = new Fad("Sherry", 300, false, 1, LocalDate.of(2020, 7, 05), "Skotland", 0);
+        //Fad fad2 = new Fad("Sherry", 300, false, "2", LocalDate.of(2020, 7, 05), "Skotland");
         //Påfyldning påfyldning2 = new Påfyldning(LocalDate.of(2019, 9, 10), 300, false, fad2);
 
         //Act
@@ -42,7 +42,7 @@ class ControllerTest {
 
         //TC3
         //Arrange
-        Fad fad3 = new Fad("Sherry", 300, false, 1, LocalDate.of(2023, 1, 20), "Skotland", 0);
+        Fad fad3 = new Fad("Sherry", 300, false, "3", LocalDate.of(2023, 1, 20), "Skotland");
         Påfyldning påfyldning3 = new Påfyldning(LocalDate.of(2017, 12, 31), 300, false, fad3);
 
         //Act
@@ -54,7 +54,7 @@ class ControllerTest {
 
         //TC3
         //Arrange
-        Fad fad4 = new Fad("Sherry", 300, false, 1, LocalDate.of(2023, 9, 21), "Skotland", 0);
+        Fad fad4 = new Fad("Sherry", 300, false, "4", LocalDate.of(2023, 9, 21), "Skotland");
         Påfyldning påfyldning4 = new Påfyldning(LocalDate.of(2016, 9, 21), 300, false, fad4);
 
         //Act

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    public Controller(){
+    public Controller() {
 
     }
 
@@ -43,8 +43,8 @@ public class Controller {
         return m;
     }
 
-    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, String fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter){
-        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse, antalPåfyldteLiter);
+    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, String fadId, LocalDate tappeDato, String oprindelse){
+        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse);
         Storage.getInstance().addFad(f);
         return f;
     }
@@ -102,7 +102,7 @@ public class Controller {
     }
     public void createSomeObjects(){
         opretReol(300, "Reol1", null);
-        opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland", 0);
+        opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland");
         opretReol(300, "Reol1", null);
         opretLager("Lager1", 300);
         opretWhiskyMængde(300, null, null);

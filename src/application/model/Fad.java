@@ -126,13 +126,4 @@ public class Fad {
                 ;
     }
 
-    public int tidPåFad(LocalDate påfyldningsDato, LocalDate tappeDato) {
-        int tidPåFad = (int) ChronoUnit.DAYS.between(påfyldningsDato, tappeDato);
-        if (tidPåFad > 1095) {
-            System.out.println("Fadet er klar til tapning");
-        } else {
-            System.out.println("Fadet er ikke klar til tapning");
-        }
-        return tidPåFad;
-    }
 }
