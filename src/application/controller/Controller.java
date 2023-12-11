@@ -18,17 +18,17 @@ public class Controller {
         return m;
     }
 
-  /*  public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
+   public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
         Destillering d = new Destillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, maltBatch);
         Storage.getInstance().addDestillering(d);
         return d;
-    } */
+    }
 
-   /* public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( antalLiter,  dato, isWhisky,  fad);
+   public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
+        Påfyldning p = new Påfyldning( antalLiter,  dato,påfyldningsDato, antalPåfyldteLiter, isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
-    }*/
+    }
 
     public static Mængde opretMængde(double volume, Påfyldning påfyldning){
         Mængde m = new Mængde(volume, påfyldning);

@@ -50,7 +50,9 @@ public class FadPane extends GridPane {
         add(lukButton, 0, 4);
         add(opretButton, 1, 4);
 
-
+        fadTypeCbo.getItems().addAll("Eg", "Ask");
+        fadStørrelseCbo.getItems().addAll(150.0, 200.0, 280.0
+        );
 
         opretButton.setOnAction(e -> opretFadButton(
                 fadTypeCbo.getSelectionModel().getSelectedItem(),
