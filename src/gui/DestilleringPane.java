@@ -89,7 +89,7 @@ class DestilleringPane extends GridPane {
     }
 
     private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar) {
-        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar);
+        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, "Maltbatch");
         lukVindue();
     }
 

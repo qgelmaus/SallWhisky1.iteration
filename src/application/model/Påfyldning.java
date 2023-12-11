@@ -22,7 +22,7 @@ public class Påfyldning {
 
 
     public Påfyldning( LocalDate dato, double antalPåfyldteLiter, boolean isWhisky, Fad fad) {
-        this.påfyldningsDato = LocalDate.now();
+        this.påfyldningsDato = dato;
         this.antalPåfyldteLiter = antalPåfyldteLiter;
         this.isWhisky = isWhisky;
         this.fad = fad;

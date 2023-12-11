@@ -4,6 +4,7 @@ import application.model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Controller {
@@ -90,8 +91,16 @@ public class Controller {
         p.setFad(f);
     }
 
+    public long tidPåFad(LocalDate påfyldningsDato, LocalDate tappeDato) {
+        long tidPåFad = ChronoUnit.DAYS.between(påfyldningsDato, tappeDato);
+        if (tidPåFad >= 1095) {
+            System.out.println("Fadet er klar til tapning");
+        } else {
+            throw new RuntimeException("Fadet er ikke klar til tapning");
+        }
+        return tidPåFad;
+    }
     public void createSomeObjects(){
-      opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
         opretReol(300, "Reol1", null);
         opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 0);
         opretReol(300, "Reol1", null);

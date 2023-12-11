@@ -52,13 +52,11 @@ public class Fad {
 
     }
 
-    public boolean getEmptyStatus(){
+    public boolean getEmptyStatus() {
         boolean isEmpty = false;
-        if(fadstørrelse - antalPåfyldteLiter <= 0){
-                isEmpty = false;
-            }
-
-        else
+        if (fadstørrelse - antalPåfyldteLiter <= 0) {
+            isEmpty = false;
+        } else
             isEmpty = true;
         return isEmpty;
 
@@ -73,7 +71,7 @@ public class Fad {
     }
 
     public void setAntalPåfyldteLiter() {
-        for(Påfyldning påfyldning : påfyldningArrayList){
+        for (Påfyldning påfyldning : påfyldningArrayList) {
             antalPåfyldteLiter += påfyldning.getAntalLiter();
         }
     }
@@ -119,18 +117,8 @@ public class Fad {
     public String toString() {
         return "Fad: " + '\'' +
                 "Type: " + fadType + '\'' +
-                "Størresle: " + fadstørrelse + "L" +  '\'' +
+                "Størresle: " + fadstørrelse + "L" + '\'' +
                 "Tilgængelig volumen: " + (fadstørrelse - antalPåfyldteLiter) + "L"
                 ;
-    }
-
-    public int tidPåFad(LocalDate påfyldningsDato, LocalDate tappeDato) {
-        int tidPåFad = (int) ChronoUnit.DAYS.between(påfyldningsDato, tappeDato);
-        if (tidPåFad > 1095) {
-            System.out.println("Fadet er klar til tapning");
-        } else {
-            System.out.println("Fadet er ikke klar til tapning");
-        }
-        return tidPåFad;
     }
 }
