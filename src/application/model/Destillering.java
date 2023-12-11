@@ -1,6 +1,7 @@
 package application.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Destillering {
@@ -35,8 +36,9 @@ public class Destillering {
     //Metoder
     public boolean dateChecker(LocalDate startDato, LocalDate slutDato){
         boolean isAfter = false;
-        if(slutDato.isAfter(startDato)){
+        if(slutDato.isAfter(startDato) && ChronoUnit.DAYS.between(startDato, slutDato) >= 11){
             isAfter = true;
+            System.out.println(" påfyldes på fad");
         }
         return isAfter;
     }
@@ -135,10 +137,6 @@ public class Destillering {
                 ", Korn: " + kornSort + '\''
                 ;
     }
-
-
-
-
 
 
 }
