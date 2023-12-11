@@ -32,6 +32,9 @@ public class Medarbejder {
         }
 
     }
-
+    @Override
+    public String toString() {
+        return navn + "\nID: " + id;
+    }
 
 }

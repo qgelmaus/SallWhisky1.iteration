@@ -4,6 +4,7 @@ import application.model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -84,8 +85,10 @@ public class Controller {
     public void createSomeObjects(){
         opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
         opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300, null);
+        opretMedarbejder("Jens", "1");
+        opretMedarbejder("Gustav", "2");
+        opretMedarbejder( "Hans", "3");
+        opretMedarbejder("Martin", "4");
+        opretMedarbejder("Mads", "5");
     }
-
-
-
 }

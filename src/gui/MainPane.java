@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -73,9 +74,10 @@ public class MainPane extends Application {
 
         gridPane.add(button1, 1, 3);
         gridPane.add(button2, 2, 3);
-        gridPane.add(button3, 1, 5);
-        gridPane.add(button4, 2, 5);
-        gridPane.add(button5, 3, 3);
+        gridPane.add(button3, 1, 4);
+        gridPane.add(button4, 2, 4);
+        gridPane.add(button5, 3, 4);
+        gridPane.add(button6,3,3);
         button1.setOnAction(e -> openBigPane(new DestilleringPane()));
         button2.setOnAction(e -> openSmallPane(new MedarbejderPane()));
         button5.setOnAction(e -> openBigPane(new PåfyldningPane()));
@@ -102,9 +104,14 @@ public class MainPane extends Application {
         button3.setOnAction(e -> updateList( destilleringLW,medarbejdersLW));
         medarbejdersLW.setPrefSize(150,150);
 
-
-
-        button4.setOnAction(e -> openBigPane(new InfoPane(destilleringLW.getSelectionModel().getSelectedItem())));
+        button4.setOnAction(e -> {
+            Destillering destilleringSelect = destilleringLW.getSelectionModel().getSelectedItem();
+        if(destilleringSelect != null) {
+            openBigPane(new InfoPane(destilleringSelect));
+        } else {
+            alertFejl().show();
+        }
+                });
         updateList(destilleringLW, medarbejdersLW);
         return gridPane;
     }
@@ -122,7 +129,8 @@ public class MainPane extends Application {
         return gridPane;
     }
 
-    private void openBigPane(GridPane pane) {
+    public void openBigPane(GridPane pane) {
+
         Stage newStage = new Stage();
         pane.setPadding(new Insets(20));
         Scene scene = new Scene(pane, 300, 350);
@@ -148,5 +156,12 @@ public class MainPane extends Application {
         listView2.setItems(observableList2);
     }
 
+    public Alert alertFejl(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Bemærkninger");
+        alert.setHeaderText("Fejl");
+        alert.setContentText("Vælg en destillering");
+        return alert;
+    }
 
 }

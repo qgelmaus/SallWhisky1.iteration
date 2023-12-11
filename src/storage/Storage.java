@@ -107,12 +107,8 @@ public class Storage {
             lagers.add(l);
     }
 
-
-
-
     public void initStorage(){
-
-
 
     }
 }
+

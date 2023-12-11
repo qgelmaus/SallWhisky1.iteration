@@ -44,6 +44,8 @@ public class MedarbejderPane extends GridPane {
 
         lukButton.setOnAction(e -> lukVindue());
         opretButton.setOnAction(e -> opretObjekt(idTxf.getText()));
+
+
     }
 
     private void opretObjekt(String id) {

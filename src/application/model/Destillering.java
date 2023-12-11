@@ -11,6 +11,7 @@ public class Destillering {
    private String rygeMateriale;
    private String kornSort;
    private String kommentar;
+   private String maltBatch;
 
    private final ArrayList<Medarbejder> medarbejderList = new ArrayList<>();
    private final ArrayList<Mængde> mængdeArrayList = new ArrayList<>();
@@ -19,13 +20,14 @@ public class Destillering {
 
 
     //Constructor
-    public Destillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar){
+    public Destillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
         this.startDato = startDato;
         this.slutDato = slutDato;
         this.væskeMængde = væskeMængde;
         this.rygeMateriale = rygeMateriale;
         this.kornSort = kornSort;
         this.kommentar = kommentar;
+        this.maltBatch = maltBatch;
     }
 
     //Metoder
