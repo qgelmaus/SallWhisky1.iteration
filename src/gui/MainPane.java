@@ -133,7 +133,7 @@ public class MainPane extends Application {
 
         Stage newStage = new Stage();
         pane.setPadding(new Insets(20));
-        Scene scene = new Scene(pane, 300, 350);
+        Scene scene = new Scene(pane, 640, 480);
         newStage.setScene(scene);
         newStage.setTitle(pane.toString());
         newStage.show();
@@ -163,5 +163,7 @@ public class MainPane extends Application {
         alert.setContentText("Vælg en destillering");
         return alert;
     }
+
+
 
 }

@@ -18,17 +18,17 @@ public class Controller {
         return m;
     }
 
-    public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
+  /*  public static Destillering opretDestillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
         Destillering d = new Destillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, maltBatch);
         Storage.getInstance().addDestillering(d);
         return d;
-    }
+    } */
 
-    public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
+   /* public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
         Påfyldning p = new Påfyldning( antalLiter,  dato, isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
-    }
+    }*/
 
     public static Mængde opretMængde(double volume, Påfyldning påfyldning){
         Mængde m = new Mængde(volume, påfyldning);
@@ -36,8 +36,8 @@ public class Controller {
         return m;
     }
 
-    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, int fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter, Reol reol){
-        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse, antalPåfyldteLiter, reol);
+    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, int fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter){
+        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse, antalPåfyldteLiter);
         Storage.getInstance().addFad(f);
         return f;
     }
@@ -83,8 +83,15 @@ public class Controller {
     }
 
     public void createSomeObjects(){
-        opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
-        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300, null);
+      //  opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
+        opretReol(300, "Reol1", null);
+       // opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300,null);
+        // opretPåfyldning(300, LocalDate.of(2023, 12, 25), LocalDate.of(2023, 12, 25), 300, false, null);
+        opretMængde(300, null);
+        opretReol(300, "Reol1", null);
+        opretLager("Lager1", 300);
+        opretWhiskyMængde(300, null, null);
+        opretWhisky("Sherry", 300, 40, null, 0);
         opretMedarbejder("Jens", "1");
         opretMedarbejder("Gustav", "2");
         opretMedarbejder( "Hans", "3");

@@ -23,7 +23,7 @@ public class Fad {
     private Reol reol;
 
 
-    public Fad(String fadType, double fadstørrelse, boolean isBlended, int fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter, Reol reol) {
+    public Fad(String fadType, double fadstørrelse, boolean isBlended, int fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter) {
         this.fadType = fadType;
         this.fadstørrelse = fadstørrelse;
         this.isBlended = isBlended;
@@ -31,7 +31,6 @@ public class Fad {
         this.tappeDato = tappeDato;
         this.oprindelse = oprindelse;
         this.antalPåfyldteLiter = antalPåfyldteLiter;
-        this.reol = reol;
     }
 
     public String getFadType() {

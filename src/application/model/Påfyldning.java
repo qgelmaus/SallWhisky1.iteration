@@ -10,7 +10,7 @@ public class Påfyldning {
 
     private LocalDate påfyldningsDato;
 
-
+    private double antalPåfyldteLiter;
 
     private boolean isWhisky;
 
@@ -20,10 +20,10 @@ public class Påfyldning {
     private Fad fad;
 
 
-    public Påfyldning(double antalLiter, LocalDate dato, boolean isWhisky, Fad fad) {
+    public Påfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad) {
         this.antalLiter = antalLiter;
-        this.dato = dato;
         this.påfyldningsDato = LocalDate.now();
+        this.antalPåfyldteLiter = antalPåfyldteLiter;
         this.isWhisky = isWhisky;
         this.fad = fad;
     }
@@ -59,7 +59,9 @@ public class Påfyldning {
         return påfyldningsDato;
     }
 
-
+    public double getAntalPåfyldteLiter() {
+        return antalPåfyldteLiter;
+    }
 
     public ArrayList<WhiskyMængde> getWhiskyMængdeArrayList() {
         return whiskyMængdeArrayList;
@@ -78,16 +80,16 @@ public class Påfyldning {
         this.fad = fad;
         if(fad != null)
             fad.addPåfyldning(this);
-        }
+    }
 
-        public void addWhiskyMængde(WhiskyMængde whiskyMængde){
+    public void addWhiskyMængde(WhiskyMængde whiskyMængde){
             if(!whiskyMængdeArrayList.contains(whiskyMængde)){
                 whiskyMængdeArrayList.add(whiskyMængde);
                 whiskyMængde.setPåfyldning(this);
             }
-        }
+    }
 
-        public void removeWhiskyMængde(WhiskyMængde whiskyMængde){
+    public void removeWhiskyMængde(WhiskyMængde whiskyMængde){
             if(whiskyMængdeArrayList.contains(whiskyMængde)){
                 whiskyMængdeArrayList.remove(whiskyMængde);
                 whiskyMængde.setPåfyldning(null);

@@ -79,8 +79,7 @@ class DestilleringPane extends GridPane {
                 Double.parseDouble(væskeMængdeField.getText()),
                 rygeMaterialeField.getText(),
                 kornSortField.getText(),
-                kommentarField.getText(),
-                maltBatchCbo.getSelectionModel().getSelectedItem().toString()
+                kommentarField.getText()
         ));
     }
 
@@ -89,8 +88,8 @@ class DestilleringPane extends GridPane {
         stage.close();
     }
 
-    private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch) {
-        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, maltBatch);
+    private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar) {
+        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar);
         lukVindue();
     }
 
@@ -98,6 +97,7 @@ class DestilleringPane extends GridPane {
     public String toString(){
         return vindueNavn;
     }
+
 
 }
 
