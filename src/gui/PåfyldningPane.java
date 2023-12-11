@@ -37,7 +37,7 @@ public class PåfyldningPane extends GridPane {
         Button fyldButton = new Button("Fyld fad");
         Button updateButton = new Button("Opdater liste");
         Button opretFadbutton = new Button("Nyt fad");
-        Label mængdeLbl = new Label("Indtast mængde:");
+        Label mængdeLbl = new Label("Indtast mængde(L):");
         TextField mængdeTxf = new TextField();
         //Listview destilleringer
         Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
@@ -82,16 +82,23 @@ public class PåfyldningPane extends GridPane {
 
 
     private void updateList(ListView listView1, ListView listView2){
-        ArrayList<Fad> avaiableList = new ArrayList<>();
-        List<Destillering> updatedDestilleringList = Storage.getInstance().getAllDestillerings();
-        ObservableList<Destillering> observableDestilleringList = FXCollections.observableArrayList(updatedDestilleringList);
+        ArrayList<Fad> avaiableFadList = new ArrayList<>();
+        ArrayList<Destillering> avaiableDestilleringList = new ArrayList<>();
         for (int i = 0; i < Storage.getInstance().getAllFads().size(); i++) {
-            if(Storage.getInstance().getAllFads().get(i).getEmptyStatus()){
-                avaiableList.add(i, Storage.getInstance().getAllFads().get(i));
+            if(Storage.getInstance().getAllFads().get(i).getAntalPåfyldteLiter() < Storage.getInstance().getAllFads().get(i).getFadstørrelse()){
+                Storage.getInstance().getAllFads().get(i).setAntalPåfyldteLiter();
+                avaiableFadList.add(i, Storage.getInstance().getAllFads().get(i));
             }
         }
-        List<Fad> updatedFadList = avaiableList;
+        for(int i = 0; i < Storage.getInstance().getAllDestillerings().size(); i++){
+            if(!Storage.getInstance().getAllDestillerings().get(i).isEmpty()){
+                avaiableDestilleringList.add(i, Storage.getInstance().getAllDestillerings().get(i));
+            }
+        }
+        List<Fad> updatedFadList = avaiableFadList;
+        List<Destillering> updatedDestilleringList = avaiableDestilleringList;
         ObservableList<Fad> observableFadList = FXCollections.observableArrayList(updatedFadList);
+        ObservableList<Destillering> observableDestilleringList = FXCollections.observableArrayList(updatedDestilleringList);
         listView1.setItems(observableDestilleringList);
         listView2.setItems(observableFadList);
     }
@@ -104,10 +111,15 @@ public class PåfyldningPane extends GridPane {
     private void fyldDestPåFad(Destillering destillering, Fad fad, double volume,ListView listView1, ListView listview2 ){
        Påfyldning p = Controller.opretTomPåfyldning();
        p.createMængde(volume, destillering);
+       p.setAntalLiter(p.samletAntalLiter());
        fad.setAntalPåfyldteLiter();
        p.setFad(fad);
-       p.setAntalLiter(p.samletAntalLiter());
+       destillering.setLeftOverVæske();
        updateList(listView1, listview2);
+
+    }
+
+    private void updateStuff(){
 
     }
 

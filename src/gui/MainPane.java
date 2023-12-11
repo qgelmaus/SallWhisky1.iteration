@@ -39,7 +39,7 @@ public class MainPane extends Application {
 
         BorderPane borderPane = createBorderPane();
 
-        Scene scene = new Scene(borderPane, 550, 450);
+        Scene scene = new Scene(borderPane, 800, 600);
 
         primaryStage.setScene(scene);
 
@@ -84,12 +84,18 @@ public class MainPane extends Application {
         button1.setOnAction(e -> openBigPane(new DestilleringPane()));
         button2.setOnAction(e -> openSmallPane(new MedarbejderPane()));
         button5.setOnAction(e -> openBigPane(new PåfyldningPane()));
+        button6.setOnAction(e -> openSmallPane(new FadPane()));
 
 
         //Listview
+        Label fyldteFade = new Label("Fade med indhold: ");
+        fads = FXCollections.observableArrayList();
         Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
         destillerings = FXCollections.observableArrayList();
+        ListView<Fad> fadLW = new ListView<>(fads);
         ListView<Destillering> destilleringLW = new ListView<>(destillerings);
+        gridPane.add(fyldteFade, 3, 0);
+        gridPane.add(fadLW, 3, 1);
         gridPane.add(aktuelleDestilleringerLbl, 1, 0);
         gridPane.add(destilleringLW, 1, 1);
 //        button3.setOnAction(e -> updateList(destilleringLW, ));
@@ -104,7 +110,7 @@ public class MainPane extends Application {
         ListView<Medarbejder> medarbejdersLW = new ListView<>(medarbejders);
         gridPane.add(aktuelleMedarbejderLbl, 2, 0);
         gridPane.add(medarbejdersLW, 2, 1);
-        button3.setOnAction(e -> updateList( destilleringLW,medarbejdersLW));
+        button3.setOnAction(e -> updateList( destilleringLW,medarbejdersLW, fadLW));
         medarbejdersLW.setPrefSize(150,150);
 
         button4.setOnAction(e -> {
@@ -115,7 +121,8 @@ public class MainPane extends Application {
             alertFejl().show();
         }
                 });
-        updateList(destilleringLW, medarbejdersLW);
+        updateList(destilleringLW, medarbejdersLW, fadLW);
+
         return gridPane;
     }
 
@@ -149,7 +156,7 @@ public class MainPane extends Application {
         newStage.setTitle(pane.toString());
         newStage.show();
     }
-    public void updateList(ListView listView, ListView listView2){
+    public void updateList(ListView listView, ListView listView2, ListView listView3){
         List<Destillering> updatedList = Storage.getInstance().getAllDestillerings();
         ObservableList<Destillering> observableList = FXCollections.observableArrayList(updatedList);
         listView.setItems(observableList);
@@ -157,6 +164,17 @@ public class MainPane extends Application {
         List<Medarbejder> updatedList2 = Storage.getInstance().getAllMedarbejders();
         ObservableList<Medarbejder> observableList2 = FXCollections.observableArrayList(updatedList2);
         listView2.setItems(observableList2);
+
+        List<Fad> updatedList3 = Storage.getInstance().getAllFads();
+        List<Fad> fadMedIndhold = updatedList3;
+        for (int i = 0; i < Storage.getInstance().getAllFads().size(); i++) {
+            updatedList3.get(i).setAntalPåfyldteLiter();
+            if(updatedList3.get(i).getAntalPåfyldteLiter() > 0){
+                fadMedIndhold.add(i, updatedList3.get(i));
+            }
+        }
+        ObservableList<Fad> fadList = FXCollections.observableArrayList(fadMedIndhold);
+        listView3.setItems(fadList);
     }
 
     public Alert alertFejl(){
@@ -171,6 +189,17 @@ public class MainPane extends Application {
 
 
     }
+
+   /* public void updateFadeMedIndholf(ListView<Fad> fadLW){
+        ArrayList<Fad> fadMedFyld = new ArrayList<>();
+        for (int i = 0; i < fads.size(); i++) {
+            if(!fads.get(i).getEmptyStatus()){
+                fadMedFyld.add(i, fads.get(i));
+            }
+        }
+        ObservableList<Fad> fadList = FXCollections.observableArrayList(fadMedFyld);
+        fadLW.setItems(fadList);
+    } */
 
 
 

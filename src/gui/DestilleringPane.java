@@ -50,7 +50,7 @@ class DestilleringPane extends GridPane {
         Label maltBatchLabel = new Label("Maltbatch");
 
         //Combobox
-        ComboBox maltBatchCbo = new ComboBox<String>();
+        ComboBox<String> maltBatchCbo = new ComboBox<String>();
 
         // Tilføj alt
         add(startDateLabel, 0, 0);
@@ -79,7 +79,8 @@ class DestilleringPane extends GridPane {
                 Double.parseDouble(væskeMængdeField.getText()),
                 rygeMaterialeField.getText(),
                 kornSortField.getText(),
-                kommentarField.getText()
+                kommentarField.getText(),
+                maltBatchCbo.getSelectionModel().getSelectedItem()
         ));
     }
 
@@ -88,8 +89,8 @@ class DestilleringPane extends GridPane {
         stage.close();
     }
 
-    private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar) {
-        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, "Maltbatch");
+    private void opretObjekt(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch) {
+        Controller.opretDestillering(startDato, slutDato, væskeMængde, rygeMateriale, kornSort, kommentar, maltBatch);
         lukVindue();
     }
 

@@ -57,7 +57,7 @@ public class FadPane extends GridPane {
         opretButton.setOnAction(e -> opretFadButton(
                 fadTypeCbo.getSelectionModel().getSelectedItem(),
                 fadStørrelseCbo.getSelectionModel().getSelectedItem(),
-                Integer.getInteger(fadIdTxf.getText()),
+                fadIdTxf.getText(),
                 oprindelseTxf.getText()
 
         ));
@@ -76,7 +76,7 @@ public class FadPane extends GridPane {
         return vindueNavn;
     }
 
-    public void opretFadButton(String fadType, double fadstørrelse, int fadId, String oprindelse){
+    public void opretFadButton(String fadType, double fadstørrelse, String fadId, String oprindelse){
         Controller.opretFad(fadType, fadstørrelse, false, fadId, null, oprindelse, 0);
         lukVindue();
     }

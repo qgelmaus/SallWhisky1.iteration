@@ -12,6 +12,8 @@ public class Destillering {
    private String kornSort;
    private String bemærkning;
    private String maltBatch;
+   private double leftOverVæske;
+   private boolean isEmpty;
 
    private final ArrayList<Medarbejder> medarbejderList = new ArrayList<>();
    private final ArrayList<Mængde> mængdeArrayList = new ArrayList<>();
@@ -100,6 +102,22 @@ public class Destillering {
             medarbejderList.remove(medarbejder);
             medarbejder.removeDestillering(this);
         }
+    }
+
+    public void setLeftOverVæske(){
+        leftOverVæske = væskeMængde;
+        for(Mængde mængde : mængdeArrayList){
+            leftOverVæske -= mængde.getVolumen();
+        }
+    }
+
+    public void setEmpty(){
+        if (leftOverVæske < 0)
+            this.isEmpty = true;
+    }
+
+    public boolean isEmpty(){
+        return isEmpty;
     }
 
     public String getBemærkning(){
