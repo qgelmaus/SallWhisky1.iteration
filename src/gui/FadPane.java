@@ -77,7 +77,7 @@ public class FadPane extends GridPane {
     }
 
     public void opretFadButton(String fadType, double fadstørrelse, String fadId, String oprindelse){
-        Controller.opretFad(fadType, fadstørrelse, false, fadId, null, oprindelse, 0);
+        Controller.opretFad(fadType, fadstørrelse, false, fadId, null, oprindelse);
         lukVindue();
     }
 

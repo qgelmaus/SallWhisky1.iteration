@@ -86,7 +86,6 @@ public class PåfyldningPane extends GridPane {
         ArrayList<Destillering> avaiableDestilleringList = new ArrayList<>();
         for (int i = 0; i < Storage.getInstance().getAllFads().size(); i++) {
             if(Storage.getInstance().getAllFads().get(i).getAntalPåfyldteLiter() < Storage.getInstance().getAllFads().get(i).getFadstørrelse()){
-                Storage.getInstance().getAllFads().get(i).setAntalPåfyldteLiter();
                 avaiableFadList.add(i, Storage.getInstance().getAllFads().get(i));
             }
         }
@@ -110,10 +109,11 @@ public class PåfyldningPane extends GridPane {
 
     private void fyldDestPåFad(Destillering destillering, Fad fad, double volume,ListView listView1, ListView listview2 ){
        Påfyldning p = Controller.opretTomPåfyldning();
+        fad.setAntalPåfyldteLiter();
+        p.setFad(fad);
        p.createMængde(volume, destillering);
        p.setAntalLiter(p.samletAntalLiter());
-       fad.setAntalPåfyldteLiter();
-       p.setFad(fad);
+
        destillering.setLeftOverVæske();
        updateList(listView1, listview2);
 

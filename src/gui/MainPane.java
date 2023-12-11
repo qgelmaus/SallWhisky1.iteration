@@ -74,6 +74,7 @@ public class MainPane extends Application {
         Button button4 = new Button("Se bemærkninger");
         Button button5 = new Button("Fyld fad");
         Button button6 = new Button("Opret fad");
+        Button button7 = new Button("Se historik");
 
         gridPane.add(button1, 1, 3);
         gridPane.add(button2, 2, 3);
@@ -101,6 +102,9 @@ public class MainPane extends Application {
 //        button3.setOnAction(e -> updateList(destilleringLW, ));
         destilleringLW.setPrefSize(200,200);
 
+        gridPane.add(button7, 4, 1);
+        button7.setOnAction(e -> openBigPane(new HistorikPane(fadLW.getSelectionModel().getSelectedItem())));
+
         Label fadeLbl = new Label("Fade:");
         ListView<Fad> fadLw = new ListView<>(fads);
 
@@ -113,14 +117,14 @@ public class MainPane extends Application {
         button3.setOnAction(e -> updateList( destilleringLW,medarbejdersLW, fadLW));
         medarbejdersLW.setPrefSize(150,150);
 
-        button4.setOnAction(e -> {
+        /*button4.setOnAction(e -> {
             Destillering destilleringSelect = destilleringLW.getSelectionModel().getSelectedItem();
         if(destilleringSelect != null) {
             openSmallPane(new InfoPane(destilleringSelect));
         } else {
             alertFejl().show();
         }
-                });
+                }); */
         updateList(destilleringLW, medarbejdersLW, fadLW);
 
         return gridPane;

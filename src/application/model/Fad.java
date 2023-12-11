@@ -15,6 +15,8 @@ public class Fad {
     private String fadId;
     private LocalDate tappeDato;
     private String oprindelse;
+    private boolean isFull;
+    private boolean isEmpty;
 
     private double antalPåfyldteLiter;
 
@@ -29,6 +31,9 @@ public class Fad {
         this.fadId = fadId;
         this.tappeDato = tappeDato;
         this.oprindelse = oprindelse;
+        this.antalPåfyldteLiter = 0;
+        this.isEmpty = true;
+        this.isFull = false;
     }
 
     public String getFadType() {
@@ -43,6 +48,10 @@ public class Fad {
         return isBlended;
     }
 
+    public void setFull(){
+        this.isFull = true;
+    }
+
     public int getFadId() {
         int id = 0;
         id++;
@@ -52,14 +61,19 @@ public class Fad {
 
     public boolean getEmptyStatus(){
         boolean isEmpty = false;
-        if(fadstørrelse - antalPåfyldteLiter <= 0){
+        if(antalPåfyldteLiter > 0){
                 isEmpty = false;
             }
-
         else
             isEmpty = true;
         return isEmpty;
+    }
 
+    public boolean getFullStatus(){
+        boolean isFull = false;
+        if(fadstørrelse - antalPåfyldteLiter <= 0 )
+            isFull = true;
+        return isFull;
     }
 
     public LocalDate getTappeDato() {
@@ -93,10 +107,13 @@ public class Fad {
     }
 
     public void addPåfyldning(Påfyldning påfyldning) {
-        if (!påfyldningArrayList.contains(påfyldning)) {
+        if (!påfyldningArrayList.contains(påfyldning) && !isFull) {
             påfyldningArrayList.add(påfyldning);
             påfyldning.setFad(this);
         }
+        else if(isFull)
+            throw new RuntimeException("Fadet er fuldt");
+
     }
 
     public void removePåfyldning(Påfyldning påfyldning) {

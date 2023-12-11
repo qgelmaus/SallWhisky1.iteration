@@ -43,8 +43,8 @@ public class Controller {
         return m;
     }
 
-    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, String fadId, LocalDate tappeDato, String oprindelse, double antalPåfyldteLiter){
-        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse, antalPåfyldteLiter);
+    public static Fad opretFad(String fadType, double fadstørrelse, boolean isBlended, String fadId, LocalDate tappeDato, String oprindelse){
+        Fad f = new Fad(fadType, fadstørrelse, isBlended, fadId, tappeDato, oprindelse);
         Storage.getInstance().addFad(f);
         return f;
     }
@@ -101,8 +101,9 @@ public class Controller {
         return tidPåFad;
     }
     public void createSomeObjects(){
+        opretDestillering(LocalDate.of(2023,12,12), LocalDate.of(2023, 12, 23),150, "hø", "Byg", "Nice whisky bro", "Maltbatch1");
         opretReol(300, "Reol1", null);
-        opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland", 0);
+        opretFad("Sherry", 300, false, "1", LocalDate.of(2023, 12, 25), "Skotland");
         opretReol(300, "Reol1", null);
         opretLager("Lager1", 300);
         opretWhiskyMængde(300, null, null);

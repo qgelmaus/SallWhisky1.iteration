@@ -14,6 +14,7 @@ public class Påfyldning {
 
     private boolean isWhisky;
     private boolean isEmtpy;
+    private boolean isFull;
 
     private final ArrayList<WhiskyMængde> whiskyMængdeArrayList = new ArrayList<>();
 
@@ -28,17 +29,24 @@ public class Påfyldning {
         this.fad = fad;
     }
 
+    @Override
+    public String toString() {
+        return "Påfyldning{" +
+                "mængdeArrayList=" + mængdeArrayList +
+                '}';
+    }
+
     public void setAntalLiter(double antalLiter){
         for(Mængde mængde : mængdeArrayList){
             this.antalLiter += mængde.getVolumen();
             if (antalLiter >= fad.getFadstørrelse())
-                setFull();
+                fad.setFull();
         }
     }
 
-    public void setFull(){
-        this.isEmtpy = false;
-    }
+
+
+
 
     public LocalDate getDato() {
         return dato;
