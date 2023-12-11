@@ -85,9 +85,6 @@ public class MainPane extends Application {
         button2.setOnAction(e -> openSmallPane(new MedarbejderPane()));
         button5.setOnAction(e -> openBigPane(new PåfyldningPane()));
 
-        VBox vBox1 = new VBox();
-
-
 
         //Listview
         Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
@@ -113,7 +110,7 @@ public class MainPane extends Application {
         button4.setOnAction(e -> {
             Destillering destilleringSelect = destilleringLW.getSelectionModel().getSelectedItem();
         if(destilleringSelect != null) {
-            openBigPane(new InfoPane(destilleringSelect));
+            openSmallPane(new InfoPane(destilleringSelect));
         } else {
             alertFejl().show();
         }
@@ -147,7 +144,7 @@ public class MainPane extends Application {
     private void openSmallPane(GridPane pane) {
         Stage newStage = new Stage();
         pane.setPadding(new Insets(20));
-        Scene scene = new Scene(pane, 200, 150);
+        Scene scene = new Scene(pane, 350, 290);
         newStage.setScene(scene);
         newStage.setTitle(pane.toString());
         newStage.show();

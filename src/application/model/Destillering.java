@@ -10,7 +10,7 @@ public class Destillering {
    private double væskeMængde;
    private String rygeMateriale;
    private String kornSort;
-   private String kommentar;
+   private String bemærkning;
    private String maltBatch;
 
    private final ArrayList<Medarbejder> medarbejderList = new ArrayList<>();
@@ -20,13 +20,13 @@ public class Destillering {
 
 
     //Constructor
-    public Destillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String kommentar, String maltBatch){
+    public Destillering(LocalDate startDato, LocalDate slutDato, double væskeMængde, String rygeMateriale, String kornSort, String bemærkning, String maltBatch){
         this.startDato = startDato;
         this.slutDato = slutDato;
         this.væskeMængde = væskeMængde;
         this.rygeMateriale = rygeMateriale;
         this.kornSort = kornSort;
-        this.kommentar = kommentar;
+        this.bemærkning = bemærkning;
         this.maltBatch = maltBatch;
     }
 
@@ -58,6 +58,9 @@ public class Destillering {
 
     public String getKornSort() {
         return kornSort;
+    }
+    public String getMaltBatch() {
+        return maltBatch;
     }
 
     //Klassesammenhænge
@@ -99,8 +102,8 @@ public class Destillering {
         }
     }
 
-    public String getKommentar(){
-        return kommentar;
+    public String getBemærkning(){
+        return bemærkning;
     }
 
 
