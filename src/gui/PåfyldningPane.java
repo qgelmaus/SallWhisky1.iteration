@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import storage.Storage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PåfyldningPane extends GridPane {
@@ -58,15 +59,14 @@ public class PåfyldningPane extends GridPane {
                 fadListView.getSelectionModel().getSelectedItem()));
 */
         VBox buttonBox = new VBox();
+        VBox mængdeBox = new VBox();
         buttonBox.getChildren().addAll(updateButton, opretFadbutton, fyldButton, lukButton);
         buttonBox.setSpacing(15);
-        //add(updateButton, 0, 0);
         add(aktuelleFadLbl, 1, 0);
         add(fadListView, 1, 1);
         add(buttonBox, 0 , 1);
-        //add(lukButton, 1, 5);
-        //add(opretFadbutton, 0, 1);
-        //add(fyldButton, 0, 2);
+        add(mængdeBox,1,2);
+        mængdeBox.getChildren().addAll(mængdeLbl, mængdeTxf);
         add(aktuelleDestilleringerLbl, 2, 0);
         add(destilleringLW, 2, 1);
 
@@ -74,23 +74,23 @@ public class PåfyldningPane extends GridPane {
         opretFadbutton.setOnAction(e -> openNewPane(new FadPane()));
         lukButton.setOnAction(e -> lukVindue());
         updateButton.setOnAction(e -> updateList(destilleringLW, fadListView));
+        fyldButton.setOnAction(e -> fyldDestPåFad(destilleringLW.getSelectionModel().getSelectedItem(), fadListView.getSelectionModel().getSelectedItem(), Double.parseDouble(mængdeTxf.getText())));
+        updateList(destilleringLW, fadListView);
 
-       /* if(!Storage.getInstance().getAllFads().isEmpty()){
-            opretFadbutton.setDisable(true);
-        } */
 
     }
 
-   private void fyldFadFraMængde(Destillering destillering, double volume, Fad fad){
-        Påfyldning påfyldning = Controller.opretPåfyldning(volume, destillering.getStartDato(), destillering.getSlutDato(), volume, true, fad);
-        Mængde mængde = Controller.opretMængde(volume, påfyldning);
-        lukVindue();
-    }
 
-    public void updateList(ListView listView1, ListView listView2){
+    private void updateList(ListView listView1, ListView listView2){
+        ArrayList<Fad> avaiableList = new ArrayList<>();
         List<Destillering> updatedDestilleringList = Storage.getInstance().getAllDestillerings();
         ObservableList<Destillering> observableDestilleringList = FXCollections.observableArrayList(updatedDestilleringList);
-        List<Fad> updatedFadList = Storage.getInstance().getAllFads();
+        for (int i = 0; i < Storage.getInstance().getAllFads().size(); i++) {
+            if(Storage.getInstance().getAllFads().get(i).getEmptyStatus()){
+                avaiableList.add(i, Storage.getInstance().getAllFads().get(i));
+            }
+        }
+        List<Fad> updatedFadList = avaiableList;
         ObservableList<Fad> observableFadList = FXCollections.observableArrayList(updatedFadList);
         listView1.setItems(observableDestilleringList);
         listView2.setItems(observableFadList);
@@ -100,6 +100,15 @@ public class PåfyldningPane extends GridPane {
         Stage stage = (Stage) getScene().getWindow();
         stage.close();
     }
+
+    private void fyldDestPåFad(Destillering destillering, Fad fad, double volume){
+       Påfyldning p = Controller.opretTomPåfyldning();
+       p.createMængde(volume, destillering);
+       p.setFad(fad);
+       p.setAntalLiter(p.samletAntalLiter());
+
+    }
+
 
     private void openNewPane(GridPane pane) {
         Stage newStage = new Stage();

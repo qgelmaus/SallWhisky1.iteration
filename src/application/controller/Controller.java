@@ -25,13 +25,19 @@ public class Controller {
     }
 
    public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( antalLiter,  dato,påfyldningsDato, antalPåfyldteLiter, isWhisky,  fad);
+        Påfyldning p = new Påfyldning( antalLiter,  dato, antalPåfyldteLiter, isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
 
-    public static Mængde opretMængde(double volume, Påfyldning påfyldning){
-        Mængde m = new Mængde(volume, påfyldning);
+    public static Påfyldning opretTomPåfyldning(){
+        Påfyldning p = new Påfyldning(0, null, 0, false, null);
+        Storage.getInstance().addPåfyldning(p);
+        return p;
+    }
+
+    public static Mængde opretMængde(double volume, Påfyldning påfyldning, Destillering destillering){
+        Mængde m = new Mængde(volume, påfyldning, destillering);
         Storage.getInstance().addMængde(m);
         return m;
     }
@@ -78,16 +84,17 @@ public class Controller {
         f.addPåfyldning(p);
     }
 
+
+
     public static void opretFadTilPåfyldning(Fad f, Påfyldning p){
         p.setFad(f);
     }
 
     public void createSomeObjects(){
-      //  opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
+      opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
         opretReol(300, "Reol1", null);
-       // opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300,null);
-        // opretPåfyldning(300, LocalDate.of(2023, 12, 25), LocalDate.of(2023, 12, 25), 300, false, null);
-        opretMængde(300, null);
+        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300);
+         opretPåfyldning(300, LocalDate.of(2023, 12, 25), LocalDate.of(2023, 12, 25), 300, false, null);
         opretReol(300, "Reol1", null);
         opretLager("Lager1", 300);
         opretWhiskyMængde(300, null, null);

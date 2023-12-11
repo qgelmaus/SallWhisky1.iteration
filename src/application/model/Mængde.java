@@ -8,9 +8,10 @@ public class Mængde {
 
 
 
-    public Mængde(double volumen, Påfyldning påfyldning){
+    public Mængde(double volumen, Påfyldning påfyldning, Destillering destillering){
         this.påfyldning = påfyldning;
         this.volumen = volumen;
+        this.destillering = destillering;
     }
 
     public Påfyldning getPåfyldning(){
@@ -31,6 +32,10 @@ public class Mængde {
             if(destillering != null)
                 destillering.addMængde(this);
         }
+    }
+
+    public double getVolumen(){
+        return volumen;
     }
 
 }

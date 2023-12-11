@@ -1,6 +1,7 @@
 package gui;
 
 import application.model.Destillering;
+import application.model.Fad;
 import application.model.Medarbejder;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import storage.Storage;
 import javafx.geometry.Insets;
 
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class MainPane extends Application {
     private Stage primaryStage;
     private ObservableList<Destillering> destillerings;
     private ObservableList<Medarbejder> medarbejders;
+    private ObservableList<Fad> fads;
 
 
 
@@ -87,7 +90,6 @@ public class MainPane extends Application {
 
 
         //Listview
-
         Label aktuelleDestilleringerLbl = new Label("Aktive destilleringer:");
         destillerings = FXCollections.observableArrayList();
         ListView<Destillering> destilleringLW = new ListView<>(destillerings);
@@ -95,6 +97,10 @@ public class MainPane extends Application {
         gridPane.add(destilleringLW, 1, 1);
 //        button3.setOnAction(e -> updateList(destilleringLW, ));
         destilleringLW.setPrefSize(200,200);
+
+        Label fadeLbl = new Label("Fade:");
+        ListView<Fad> fadLw = new ListView<>(fads);
+
 
         Label aktuelleMedarbejderLbl = new Label("Aktive medarbejdere:");
         medarbejders = FXCollections.observableArrayList();
@@ -162,6 +168,11 @@ public class MainPane extends Application {
         alert.setHeaderText("Fejl");
         alert.setContentText("Vælg en destillering");
         return alert;
+    }
+
+    public void setOptagetFad(ListView<Fad> fadLw){
+
+
     }
 
 

@@ -52,6 +52,17 @@ public class Fad {
 
     }
 
+    public boolean getEmptyStatus(){
+        boolean isEmpty;
+        if(påfyldningArrayList.isEmpty()){
+            isEmpty = true;
+        }
+        else
+            isEmpty = false;
+        return isEmpty;
+
+    }
+
     public LocalDate getTappeDato() {
         return tappeDato;
     }
