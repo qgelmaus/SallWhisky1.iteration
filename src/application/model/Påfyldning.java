@@ -13,8 +13,7 @@ public class Påfyldning {
     private double antalPåfyldteLiter;
 
     private boolean isWhisky;
-    private boolean isEmtpy;
-    private boolean isFull;
+
 
     private final ArrayList<WhiskyMængde> whiskyMængdeArrayList = new ArrayList<>();
 
