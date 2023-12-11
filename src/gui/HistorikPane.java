@@ -42,7 +42,7 @@ public class HistorikPane extends GridPane {
         ListView<Påfyldning> påfyldningListView = new ListView();
         ListView<Destillering> destilleringListView = new ListView();
         VBox listviewBox = new VBox(5);
-        listviewBox.getChildren().addAll(påfyldningListView, destilleringListView);
+        listviewBox.getChildren().addAll(destilleringListView);
         infoLW.setItems(destObsList);
         add(infoLW, 0, 1);
 
