@@ -53,12 +53,13 @@ public class Fad {
     }
 
     public boolean getEmptyStatus(){
-        boolean isEmpty;
-        if(påfyldningArrayList.isEmpty()){
-            isEmpty = true;
-        }
+        boolean isEmpty = false;
+        if(fadstørrelse - antalPåfyldteLiter <= 0){
+                isEmpty = false;
+            }
+
         else
-            isEmpty = false;
+            isEmpty = true;
         return isEmpty;
 
     }
@@ -71,8 +72,10 @@ public class Fad {
         return oprindelse;
     }
 
-    public double getAntalPåfyldteLiter() {
-        return antalPåfyldteLiter;
+    public void setAntalPåfyldteLiter() {
+        for(Påfyldning påfyldning : påfyldningArrayList){
+            antalPåfyldteLiter += påfyldning.getAntalLiter();
+        }
     }
 
     public Reol getReol() {
@@ -114,17 +117,11 @@ public class Fad {
 
     @Override
     public String toString() {
-        return "Fad{" +
-                "fadType='" + fadType + '\'' +
-                ", fadstørrelse=" + fadstørrelse +
-                ", isBlended=" + isBlended +
-                ", fadId=" + fadId +
-                ", tappeDato=" + tappeDato +
-                ", oprindelse='" + oprindelse + '\'' +
-                ", antalPåfyldteLiter=" + antalPåfyldteLiter +
-                ", påfyldningArrayList=" + påfyldningArrayList +
-                ", reol=" + reol +
-                '}';
+        return "Fad: " + '\'' +
+                "Type: " + fadType + '\'' +
+                "Størresle: " + fadstørrelse + "L" +  '\'' +
+                "Tilgængelig volumen: " + (fadstørrelse - antalPåfyldteLiter) + "L"
+                ;
     }
 
     public int tidPåFad(LocalDate påfyldningsDato, LocalDate tappeDato) {

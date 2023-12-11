@@ -24,14 +24,14 @@ public class Controller {
         return d;
     }
 
-   public static Påfyldning opretPåfyldning(double antalLiter, LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
-        Påfyldning p = new Påfyldning( antalLiter,  dato, antalPåfyldteLiter, isWhisky,  fad);
+   public static Påfyldning opretPåfyldning( LocalDate dato, LocalDate påfyldningsDato, double antalPåfyldteLiter, boolean isWhisky, Fad fad){
+        Påfyldning p = new Påfyldning( dato, antalPåfyldteLiter, isWhisky,  fad);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
 
     public static Påfyldning opretTomPåfyldning(){
-        Påfyldning p = new Påfyldning(0, null, 0, false, null);
+        Påfyldning p = new Påfyldning( null, 0, false, null);
         Storage.getInstance().addPåfyldning(p);
         return p;
     }
@@ -93,8 +93,7 @@ public class Controller {
     public void createSomeObjects(){
       opretDestillering(LocalDate.of(2023, 12, 9), LocalDate.of(2023, 12, 25), 300, "Birk", "Byg", "Første destillering", "MaltBatch1");
         opretReol(300, "Reol1", null);
-        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 300);
-         opretPåfyldning(300, LocalDate.of(2023, 12, 25), LocalDate.of(2023, 12, 25), 300, false, null);
+        opretFad("Sherry", 300, false, 1, LocalDate.of(2023, 12, 25), "Skotland", 0);
         opretReol(300, "Reol1", null);
         opretLager("Lager1", 300);
         opretWhiskyMængde(300, null, null);

@@ -74,7 +74,7 @@ public class PåfyldningPane extends GridPane {
         opretFadbutton.setOnAction(e -> openNewPane(new FadPane()));
         lukButton.setOnAction(e -> lukVindue());
         updateButton.setOnAction(e -> updateList(destilleringLW, fadListView));
-        fyldButton.setOnAction(e -> fyldDestPåFad(destilleringLW.getSelectionModel().getSelectedItem(), fadListView.getSelectionModel().getSelectedItem(), Double.parseDouble(mængdeTxf.getText())));
+        fyldButton.setOnAction(e -> fyldDestPåFad(destilleringLW.getSelectionModel().getSelectedItem(), fadListView.getSelectionModel().getSelectedItem(), Double.parseDouble(mængdeTxf.getText()), destilleringLW, fadListView));
         updateList(destilleringLW, fadListView);
 
 
@@ -101,11 +101,13 @@ public class PåfyldningPane extends GridPane {
         stage.close();
     }
 
-    private void fyldDestPåFad(Destillering destillering, Fad fad, double volume){
+    private void fyldDestPåFad(Destillering destillering, Fad fad, double volume,ListView listView1, ListView listview2 ){
        Påfyldning p = Controller.opretTomPåfyldning();
        p.createMængde(volume, destillering);
+       fad.setAntalPåfyldteLiter();
        p.setFad(fad);
        p.setAntalLiter(p.samletAntalLiter());
+       updateList(listView1, listview2);
 
     }
 
